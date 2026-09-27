@@ -1,0 +1,35 @@
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - Role: MarketLink AI decision engine
+   - Feature: smart_weekly_stock_template
+   - Constraint: Use ONLY supplied platform data
+   - Constraint: Do not invent facts, IDs, prices, quantities, people, locations, or dates
+   - Output format: JSON only, matching schema: `{"suggestions": object mapping day 1-7 to object mapping product_id to non-negative number}`
+   - Platform data: `{"local_suggestions":{"1":{"1":1},"4":{"7":1},"6":{"1":20}}}`
+
+2.  **Deconstruct the Platform Data:**
+   - The data is: `{"local_suggestions":{"1":{"1":1},"4":{"7":1},"6":{"1":20}}}`
+   - This seems to be a nested object where `local_suggestions` contains keys that look like day numbers (1, 4, 6), and each maps to an object mapping product IDs to quantities.
+   - Let's parse it:
+     - Day 1: product 1 -> quantity 1
+     - Day 4: product 7 -> quantity 1
+     - Day 6: product 1 -> quantity 20
+   - Days 2, 3, 5, 7 are not mentioned in the data. The schema requires `object mapping day 1-7 to object mapping product_id to non-negative number`. This means I need to produce suggestions for all 7 days. For days not present in the data, I should probably output an empty object `{}` or `0` quantities? The schema says: `{"suggestions": object mapping day 1-7 to object mapping product_id to non-negative number}`. So the structure should be like:
+     ```json
+     {
+       "suggestions": {
+         "1": {"1": 1},
+         "2": {},
+         "3": {},
+         "4": {"7": 1},
+         "5": {},
+         "6": {"1": 20},
+         "7": {}
+       }
+     }
+     ```
+   - But wait, the product IDs and quantities must come from the data. I shouldn't invent product IDs. The data gives me `1`, `7`, and `20` as quantities, but product IDs are `1`, `7` (as quantities? No, `7` is a product ID on day 4, and `1` is a product ID on days 1 and 6). Quantities are `1`, `1`, `20`.
+   - Let me re-read the platform data format: `{"local_suggestions":{"1":{"1":1},"4":{"7":1},"6":{"1":20}}}`
+   - This likely means:
+     - Day 1:

@@ -1,0 +1,19 @@
+We need to output JSON with flags array of objects each containing vendor_id, suggestion, priority (1-100). Use only supplied platform data. The data already contains flags array with vendor_id, suggestion (the suggestion string). We need to add priority. The priority should be based on something like poor_weeks maybe? Not specified, but we must keep recommendations practical and grounded in provided data. We can infer priority: higher poor_weeks => higher priority. Also maybe lower usual sales => higher priority. We need to compute priority integer 1-100.
+
+We must not invent facts, but we can derive priority from given fields. That's allowed as it's not inventing new data, just computing. Must ensure we don't add new fields not in schema. Provide flags array with same vendor_ids and suggestions as given, plus priority.
+
+We need to decide a formula. For simplicity, we could set priority = min(100, poor_weeks * 3 + (10 - usual*5)?) But usual can be float. Better to base on poor_weeks primarily. Let's map poor_weeks to priority: poor_weeks 0-? max in data is 26 (vendor 1). So we can scale: priority = floor(poor_weeks / max_poor_weeks * 100). max_poor_weeks = 26. So vendor 1 priority = floor(26/26*100)=100. Others proportionally.
+
+Compute for each:
+
+We'll compute priority = round(poor_weeks / 26 * 100). Use integer.
+
+Let's list each vendor from data:
+
+1: poor_weeks 26 => 26/26*100=100 => priority 100
+11: 4 => 4/26*100=15.38 => round 15
+13: 4 => 15
+14: 3 => 3/26*100=11.54 => round 12
+17: 6 => 6/26*100=23.08 => round 23
+19: 4 => 15
+22: 5 => 5/26*100=19.23

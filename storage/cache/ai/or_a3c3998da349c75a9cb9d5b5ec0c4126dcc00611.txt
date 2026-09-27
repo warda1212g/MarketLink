@@ -1,0 +1,20 @@
+```json
+{
+  "stalls": [
+    {"vendor_id": 16, "score": 58, "label": "Healthy", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 17, "score": 45, "label": "Needs attention", "action": "Customers are not returning — prompt the vendor to reply to reviews."},
+    {"vendor_id": 45, "score": 61, "label": "Healthy", "action": "Customers are not returning — prompt the vendor to reply to reviews."},
+    {"vendor_id": 42, "score": 61, "label": "Healthy", "action": "Customers are not returning — prompt the vendor to reply to reviews."},
+    {"vendor_id": 22, "score": 38, "label": "At risk", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 44, "score": 61, "label": "Healthy", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 34, "score": 61, "label": "Healthy", "action": "Customers are not returning — prompt the vendor to reply to reviews."},
+    {"vendor_id": 10, "score": 42, "label": "Needs attention", "action": "Customers are not returning — prompt the vendor to reply to reviews."},
+    {"vendor_id": 53, "score": 49, "label": "Needs attention", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 43, "score": 41, "label": "Needs attention", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 19, "score": 41, "label": "Needs attention", "action": "Customers are not returning — prompt the vendor to reply to reviews."},
+    {"vendor_id": 14, "score": 58, "label": "Healthy", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 31, "score": 48, "label": "Needs attention", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 13, "score": 38, "label": "At risk", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 52, "score": 61, "label": "Healthy", "action": "Customers are not returning — prompt the vendor to reply to reviews."},
+    {"vendor_id": 39, "score": 38, "label": "At risk", "action": "Low attendance — confirm operating days and cut-off times."},
+    {"vendor_id": 26, "score": 60, "label": "Healthy", "action": "Customers are not returning — prompt

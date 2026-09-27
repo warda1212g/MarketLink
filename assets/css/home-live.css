@@ -1,0 +1,100 @@
+/* Extra homepage styles (index.php only) */
+
+/* Cards whose record has no uploaded photo */
+.no-img{
+  background:linear-gradient(135deg, #2f4a33 0%, #6f8f5a 100%) !important;
+}
+
+.map-float-card{ text-decoration:none; display:block; transition:transform .2s; }
+.map-float-card:hover{ transform:translateY(-2px); }
+.map-float-card p + p{ margin-top:4px; }
+
+.product-img{ display:block; }
+.product-rating span{ font-size:12px; color:var(--ink-soft); }
+.farmer-card-foot small{ color:var(--ink-soft); font-size:11px; }
+a.btn-reserve{ text-decoration:none; justify-content:center; }
+.btn-reserve[disabled]{ opacity:.6; cursor:wait; }
+.product-card.sold-out .btn-reserve{ opacity:.45; pointer-events:none; }
+.product-card.sold-out [data-live-qty]{ color:#B3543E; }
+a.fav-mini-img{ display:block; }
+
+.chat-actions a{
+  font-family:var(--font-nav);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:var(--natural);
+  border:1px solid var(--natural);
+  padding:8px 14px;
+  border-radius:20px;
+  text-decoration:none;
+  transition:background .2s, color .2s;
+}
+.chat-actions a:hover{ background:var(--natural); color:#fff; }
+.chat-input input{
+  flex:1; min-width:0;
+  border:0; outline:0; background:transparent;
+  font:inherit; color:var(--ink);
+}
+.chat-input button{ border:0; background:transparent; cursor:pointer; padding:0 0 0 8px; display:flex; }
+
+/* value flashes briefly when the live refresh changes it */
+[data-live].bumped, [data-live-price].bumped, [data-live-qty].bumped, [data-live-cat].bumped{
+  animation:home-bump 1.2s ease;
+}
+@keyframes home-bump{
+  0%{ background:rgba(179,210,120,.55); }
+  100%{ background:transparent; }
+}
+
+.live-dot{
+  display:inline-block; width:8px; height:8px; border-radius:50%;
+  background:#7bd389; margin-right:6px; vertical-align:middle;
+  box-shadow:0 0 0 0 rgba(123,211,137,.7);
+  animation:home-pulse 2s infinite;
+}
+@keyframes home-pulse{
+  70%{ box-shadow:0 0 0 8px rgba(123,211,137,0); }
+  100%{ box-shadow:0 0 0 0 rgba(123,211,137,0); }
+}
+
+.home-toast{
+  position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
+  z-index:1000; max-width:calc(100% - 32px);
+  background:#1f2d22; color:#fff;
+  padding:12px 20px; border-radius:24px;
+  font-size:13px; box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+.home-toast.error{ background:#8a3b2c; }
+
+@media (prefers-reduced-motion: reduce){
+  .live-dot, [data-live].bumped{ animation:none; }
+}
+
+/* Discover nearby map */
+.discover-map .home-map{ position:absolute; inset:0; background:var(--beige); z-index:0; }
+.discover-map .home-map .leaflet-tile-pane{ filter:grayscale(.35) sepia(.25) hue-rotate(40deg) saturate(.8) brightness(1.02) contrast(.95); }
+.discover-map .leaflet-control-zoom a{ color:var(--deep-forest); }
+.discover-map .leaflet-control-attribution{ font-size:10px; background:rgba(244,241,232,.8); }
+.home-pin span{
+  display:block; width:26px; height:26px; border-radius:50%;
+  background:var(--forest); border:3px solid var(--off-white);
+  box-shadow:0 0 0 6px rgba(47,107,63,.22), 0 6px 14px rgba(7,21,13,.35);
+  transition:transform .25s var(--ease-cinematic);
+}
+.home-pin:hover span{ transform:scale(1.18); background:var(--natural); }
+.discover-map .leaflet-popup-content-wrapper{ border-radius:6px; background:var(--off-white); box-shadow:0 12px 30px rgba(7,21,13,.3); }
+.discover-map .leaflet-popup-content{ margin:12px 16px; }
+.discover-map .leaflet-popup-tip{ background:var(--off-white); }
+.home-pop{ display:block; text-decoration:none; color:var(--ink); }
+.home-pop strong{ display:block; font-family:var(--font-serif); font-weight:500; font-size:15px; }
+.home-pop small{ font-family:var(--font-nav); font-size:11px; color:var(--natural); }
+.home-map-legend{
+  position:absolute; top:18px; left:18px; z-index:500;
+  display:flex; align-items:center; gap:8px;
+  padding:8px 14px; border-radius:999px;
+  background:rgba(11,36,22,.88); color:var(--off-white);
+  font-family:var(--font-nav); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+}
+.home-map-legend span{ width:9px; height:9px; border-radius:50%; background:var(--soft-green); box-shadow:0 0 0 4px rgba(111,159,114,.3); }
+.discover-map .map-float-card{ z-index:500; left:auto; right:18px; bottom:34px; }

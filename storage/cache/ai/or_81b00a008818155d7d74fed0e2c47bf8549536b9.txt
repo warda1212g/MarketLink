@@ -1,0 +1,10 @@
+The user wants me to act as the MarketLink AI decision engine for the feature "pre_visit_confidence". I need to output JSON with "pct" (integer 0-100) and "note" (string) based ONLY on the supplied platform data.
+
+Platform data:
+- active_weeks_last_8: 2
+- recent_live_orders: 2
+- completed_orders: 2
+- cancelled_or_declined: 0
+- local_confidence: 48
+
+I need to compute a confidence percentage (pct) and a note. The local_confidence is given as 48. That might be a base confidence. But I should consider other metrics: active weeks (2 out of 8), recent live orders (2), completed orders (2), cancelled/declined (0). This suggests a relatively new or low activity seller but with no cancellations. The local_confidence of 48 might be a precomputed metric. I should use that as the pct? Or compute something else? The instruction

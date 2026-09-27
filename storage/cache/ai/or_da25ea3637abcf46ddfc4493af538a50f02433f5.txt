@@ -1,0 +1,1 @@
+{"pct": 30, "note": "Low confidence due to minimal activity: only 1 active week in the last 8, 1 recent live order, 0 completed orders, and 0 cancelled or declined orders. Local confidence is 30."}
